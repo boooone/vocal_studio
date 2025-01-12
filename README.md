@@ -23,4 +23,10 @@ Need to get make first
 choco install make
 ```
 
-This is godsend, someone decompiled the live 12 Midi remote scripts https://github.com/gluon/AbletonLive12_MIDIRemoteScripts. 
+This is godsend, someone decompiled the live 12 Midi remote scripts https://github.com/gluon/AbletonLive12_MIDIRemoteScripts.
+
+I'm trying to reverse engineer an understanding of the `Subject` lifecycle. Primarily through an Ableton Live 12 `ControlSurface` object. 
+
+So far I have determined that:
+- The constructor is invoked when the control surface is added to the midi map in Preferences > Link, Tempo & MIDI
+- The `disconnect` method is invoked when the control surface is removed from the midi map in Preferences > Link, Tempo & MIDI

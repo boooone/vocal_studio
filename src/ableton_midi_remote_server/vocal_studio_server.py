@@ -28,3 +28,9 @@ class VocalStudioServer(ControlSurface):
 #               conn.close()
 #
         self._socket.close()
+
+    def disconnect(self):
+        with self.component_guard():
+            self.log_message("VocalStudioServer disconnected, bitch")
+            self.song().stop_playing()
+        super(VocalStudioServer, self).disconnect()
