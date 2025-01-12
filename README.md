@@ -25,7 +25,9 @@ The high level architecture is:
 - Ableton Control Surface running HTTP server to receive control commands.
 - Ableton Control.
 
-## Dev reference 
+## Dev log 
+
+### Entry 1
 Alright, It's fucked. Going to try and reverse engineer the ableton midi remote script api.
 
 I was having some trouble decompiling because of python version and some windows shenanigans, but these nerds got me.
@@ -51,3 +53,9 @@ Also printed out all the method names on `c_instance.song()`
 Small tradgedy struck, but we're passed that. On the BaseHTTPRequestHandler I made a `log_message` method to forward prints to the ableton `c_instance.log_message` method...
 which also happens to be an actual method on the handler lol. Took me like 2 hours to figure out why it was freezing because I need to swallow stderr since it's overridden in ableton. Fuck my life dude.
 Ended up ripping out the server code to test locally (which I arguably should have been doing in the first place). Immediately I saw the error and was engulfed in rage.
+
+Finally at the point where the networking is solid and we are starting and stopping tracks with a hardcoded control language (client is a bootsrapped REPL) mapping to
+- `c_instance.song().start_playing()`
+- `c_instance.song().stop_playing()`
+
+Nice, about 5 hours of work and I can click a button, but worse. This CS degree is paying off big time!
